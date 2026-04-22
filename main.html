@@ -6,7 +6,29 @@
 <input type ="number", id = "year", name ="year", placeholder= "Enter Year">
 <h3 id = "url"> https://localhost:8080/</h3>	  
 
-	  
+	  document.getElementById("button").addEventListener("click", function () {
+    let name = document.getElementById("name").value;
+    let year = document.getElementById("year").value;
+
+    let baseURL = "https://localhost:8080/";
+    let params = [];
+
+    if (name) {
+        params.push("name=" + encodeURIComponent(name));
+    }
+
+    if (year) {
+        params.push("year=" + encodeURIComponent(year));
+    }
+
+    let finalURL = baseURL;
+
+    if (params.length > 0) {
+        finalURL += "?" + params.join("&");
+    }
+
+    document.getElementById("url").textContent = finalURL;
+});
     <script type="text/javascript" src="./script.js">
 </script>
   </body>
